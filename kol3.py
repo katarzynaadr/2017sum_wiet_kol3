@@ -48,6 +48,11 @@ class SimulationTest(unittest.TestCase):
         self.plane_position.current_position = 0.1
         self.plane_position.show_current_position()
         self.assertEqual('Current position: 0.1', self.plane_position.current_position_string)
+        
+    def test_show_current_position_string(self):
+        self.plane_position.current_position = '10'
+        self.plane_position.show_current_position()
+        self.assertEqual('Current position: 10', self.plane_position.current_position_string)
 
 
 if __name__ == "__main__":
