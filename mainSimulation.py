@@ -7,7 +7,7 @@ import time
 mu = 0
 sigma = 1
 
-class Simulation:
+class Simulation(object):
     def simulate(self):
         planePosition = PlanePosition()
         print(30 * '-')
@@ -20,10 +20,11 @@ class Simulation:
         is_valid = 0
         while not is_valid:
             try:
-                choice = int(input('Enter your choice [1-2] : '))
+                choice = int(raw_input('Enter your choice [1-2] : '))
                 is_valid = 1  ## set it to 1 to validate input and to terminate the while..not loop
             except ValueError as e:
                 print("'%s' is not a valid integer." % e.args[0].split(": ")[1])
+                continue
 
             ### Take action as per selected menu-option ###
             if choice == 1:
@@ -35,7 +36,7 @@ class Simulation:
 
                     planePosition.correction_flight()
                     planePosition.show_current_position()
-                    to_stop = input("Do you want to brake? y-true \n\n")
+                    to_stop = raw_input("Do you want to brake? y-true \n\n")
                     if to_stop == "y":
                         sys.exit(0)
                     time.sleep(1)
